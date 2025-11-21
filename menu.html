@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meniu - Botanic Cafe</title>
+    <link rel="icon" type="image/jpeg" href="foto/logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .menu-page {
+            padding-top: 90px;
+            background: var(--cream);
+            min-height: 100vh;
+        }
+
+        .menu-header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            background: linear-gradient(135deg, rgba(26, 61, 14, 0.1), rgba(74, 124, 42, 0.1));
+        }
+
+        .menu-header h1 {
+            font-family: 'Petit Formal Script', cursive;
+            font-size: 4rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+
+        .menu-header p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .menu-categories {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .menu-category {
+            margin-bottom: 4rem;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-title {
+            font-family: 'Petit Formal Script', cursive;
+            font-size: 3rem;
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--light-green);
+            font-weight: normal;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .menu-item-detailed {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            background: rgba(168, 213, 163, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--light-green);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item-detailed:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(168, 213, 163, 0.1);
+        }
+
+        .item-header {
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name {
+            font-family: 'Petit Formal Script', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            font-weight: normal;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--light-green);
+        }
+
+        .item-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 90px;
+            left: 1.5rem;
+            z-index: 999;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: var(--primary-green);
+            color: var(--white);
+            margin-top: 3rem;
+        }
+
+        .menu-footer p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        @media (min-width: 768px) {
+            .menu-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-header h1 {
+                font-size: 5rem;
+            }
+
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin: 2rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .menu-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-category {
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="foto/logo.jpg" alt="Botanic Cafe Logo">
+                <span>BOTANIC CAFE</span>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Acasă</a></li>
+                <li><a href="index.html#about">Despre</a></li>
+                <li><a href="menu.html">Meniu</a></li>
+                <li><a href="index.html#gallery">Galerie</a></li>
+                <li><a href="index.html#testimonials">Recenzii</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="menu-page">
+        <a href="index.html" class="back-button">← Înapoi</a>
+        
+        <div class="menu-header">
+            <h1>Meniul Nostru</h1>
+            <p>Descoperă aromele și savoarea fiecărei băuturi</p>
+        </div>
+
+        <div class="menu-categories">
+            <!-- Coffee Section -->
+            <div class="menu-category slide-up">
+                <h2 class="category-title">☕ Cafea</h2>
+                <div class="menu-items">
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Espresso</h3>
+                        </div>
+                        <span class="item-price">15 RON</span>
+                        <p class="item-description">Cafea intensă și aromată, servită în ceașca tradițională</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Cappuccino</h3>
+                        </div>
+                        <span class="item-price">18 RON</span>
+                        <p class="item-description">Espresso cu lapte spumos și cacao, perfect echilibrat</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Caffè Latte</h3>
+                        </div>
+                        <span class="item-price">19 RON</span>
+                        <p class="item-description">Espresso cu lapte aburit și spumă cremoasă</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Americano</h3>
+                        </div>
+                        <span class="item-price">16 RON</span>
+                        <p class="item-description">Espresso diluat cu apă fierbinte, pentru o experiență mai blândă</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Macchiato</h3>
+                        </div>
+                        <span class="item-price">17 RON</span>
+                        <p class="item-description">Espresso cu o picătură de lapte spumos</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Flat White</h3>
+                        </div>
+                        <span class="item-price">20 RON</span>
+                        <p class="item-description">Dublu espresso cu lapte micro-spumat, cremos și intens</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Caffè Mocha</h3>
+                        </div>
+                        <span class="item-price">22 RON</span>
+                        <p class="item-description">Espresso cu ciocolată, lapte și frișcă</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Irish Coffee</h3>
+                        </div>
+                        <span class="item-price">25 RON</span>
+                        <p class="item-description">Cafea cu whiskey irlandez și frișcă</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pastries Section -->
+            <div class="menu-category slide-up">
+                <h2 class="category-title">🥐 Patiserie</h2>
+                <div class="menu-items">
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Croissant Clasic</h3>
+                        </div>
+                        <span class="item-price">12 RON</span>
+                        <p class="item-description">Croissant proaspăt cu unt, fraged și auriu</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Croissant cu Ciocolată</h3>
+                        </div>
+                        <span class="item-price">15 RON</span>
+                        <p class="item-description">Croissant cu ciocolată belgiană topită</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Muffin cu Afine</h3>
+                        </div>
+                        <span class="item-price">14 RON</span>
+                        <p class="item-description">Muffin proaspăt cu afine și zahăr pudră</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Muffin cu Ciocolată</h3>
+                        </div>
+                        <span class="item-price">14 RON</span>
+                        <p class="item-description">Muffin cu ciocolată și ciocolată chips</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Prăjitură cu Caramel</h3>
+                        </div>
+                        <span class="item-price">18 RON</span>
+                        <p class="item-description">Prăjitură cremoasă cu caramel și nuci</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Cheesecake</h3>
+                        </div>
+                        <span class="item-price">20 RON</span>
+                        <p class="item-description">Cheesecake clasic cu fructe de pădure</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Tiramisu</h3>
+                        </div>
+                        <span class="item-price">22 RON</span>
+                        <p class="item-description">Desert italian clasic cu cafea și mascarpone</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Brownie cu Nuci</h3>
+                        </div>
+                        <span class="item-price">16 RON</span>
+                        <p class="item-description">Brownie dens cu ciocolată și nuci</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fresh Juices & Smoothies Section -->
+            <div class="menu-category slide-up">
+                <h2 class="category-title">🥤 Sucuri & Smoothie-uri</h2>
+                <div class="menu-items">
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Suc de Portocale Proaspăt</h3>
+                        </div>
+                        <span class="item-price">18 RON</span>
+                        <p class="item-description">Suc natural de portocale proaspăt stoars</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Suc de Mere</h3>
+                        </div>
+                        <span class="item-price">16 RON</span>
+                        <p class="item-description">Suc natural de mere, răcoritor și dulce</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Smoothie de Fructe de Pădure</h3>
+                        </div>
+                        <span class="item-price">22 RON</span>
+                        <p class="item-description">Smoothie cu afine, zmeură și căpșuni</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Smoothie Tropical</h3>
+                        </div>
+                        <span class="item-price">24 RON</span>
+                        <p class="item-description">Smoothie cu mango, ananas și banană</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Smoothie Verde</h3>
+                        </div>
+                        <span class="item-price">20 RON</span>
+                        <p class="item-description">Smoothie cu spanac, kiwi și banană</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Limonadă Naturală</h3>
+                        </div>
+                        <span class="item-price">15 RON</span>
+                        <p class="item-description">Limonadă proaspătă cu lămâi și mentă</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Ceai Verde</h3>
+                        </div>
+                        <span class="item-price">12 RON</span>
+                        <p class="item-description">Ceai verde premium, răcoritor și sănătos</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Ceai de Fructe</h3>
+                        </div>
+                        <span class="item-price">12 RON</span>
+                        <p class="item-description">Ceai aromat cu fructe, cald sau rece</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Drinks Section -->
+            <div class="menu-category slide-up">
+                <h2 class="category-title">✨ Băuturi Speciale</h2>
+                <div class="menu-items">
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Hot Chocolate</h3>
+                        </div>
+                        <span class="item-price">20 RON</span>
+                        <p class="item-description">Ciocolată caldă cremoasă cu frișcă și ciocolată chips</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Matcha Latte</h3>
+                        </div>
+                        <span class="item-price">24 RON</span>
+                        <p class="item-description">Matcha premium cu lapte spumos, energizant și delicios</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Chai Latte</h3>
+                        </div>
+                        <span class="item-price">21 RON</span>
+                        <p class="item-description">Ceai indian cu mirodenii, lapte și miere</p>
+                    </div>
+                    <div class="menu-item-detailed">
+                        <div class="item-header">
+                            <h3 class="item-name">Frappé</h3>
+                        </div>
+                        <span class="item-price">22 RON</span>
+                        <p class="item-description">Cafea rece cu gheață, lapte și sirop de vanilie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-footer">
+            <p>Toate produsele noastre sunt preparate cu ingrediente proaspete și de calitate</p>
+            <p style="margin-top: 0.5rem; font-size: 1rem; opacity: 0.8;">Prețurile pot varia. Vă rugăm să ne contactați pentru informații actualizate.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
